@@ -15,7 +15,7 @@ const WebRoutes = () => {
         {id: 102, path:"/about", element: <About/>},
         {id: 103, path:"/contact", element: <ContactUs/>},
         {id: 104, path:"/login", element: <Login/>},
-        {id: 105, path:"/productdetail", element: <ProductDetail/>},
+        {id: 105, path:"/products/:slug", element: <ProductDetail/>},
         {id: 106, path:"/products", element: <Products/>}
     ]
 
