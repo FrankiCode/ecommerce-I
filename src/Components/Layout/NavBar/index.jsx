@@ -3,6 +3,7 @@ import { HiMiniBars3 } from "react-icons/hi2";
 import { CiSearch } from "react-icons/ci";
 import { Link, NavLink } from 'react-router';
 import { HiOutlineShoppingBag } from "react-icons/hi2";
+import { HiBars3CenterLeft } from "react-icons/hi2";
 import { LiaTimesSolid } from "react-icons/lia";
 import { CiLogin } from "react-icons/ci";
 import Button from '../../Common/Button'
@@ -20,7 +21,7 @@ const NavBar = () => {
     ]
   return (
     <div className='sticky top-0 bg-[var(--background)] md:bg-transparent flex justify-between items-center px-5 py-5 select-none duration-500 z-1'>
-        {showBar ? (<LiaTimesSolid className='text-xl md:text-2xl lg:text-3xl text-[var(--mainColor)] cursor-pointer duration-500' onClick={() => {setShowBar(!showBar)}} />) : (<HiMiniBars3  className='text-xl md:text-2xl lg:text-3xl text-[var(--mainColor)] cursor-pointer duration-500' onClick={() => {setShowBar(!showBar)}}/>)}
+        {showBar ? (<LiaTimesSolid className='text-xl md:text-2xl lg:text-3xl text-[var(--mainColor)] cursor-pointer duration-500' onClick={() => {setShowBar(!showBar)}} />) : (<HiBars3CenterLeft  className='text-xl md:text-2xl lg:text-3xl text-[var(--mainColor)] cursor-pointer duration-500' onClick={() => {setShowBar(!showBar)}}/>)}
 
         <Link to="/"><h1 className='text-2xl md:text-3xl lg:text-4xl font-bold text-[var(--mainColor)] font-serif cursor-pointer tracking-[5px] duration-500'>NavBar</h1></Link>
 
