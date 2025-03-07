@@ -5,16 +5,18 @@ import ContactUs from '../../Pages/ContactUs';
 import ProductDetail from '../../Pages/ProductDetail';
 import { Route, Routes } from 'react-router';
 import Login from '../../Pages/Login';
+import Products from '../../Pages/Products';
 
 
 const WebRoutes = () => {
 
     const routes = [
         {id: 101, path:"/", element: <Home/>},
-        {id: 101, path:"/about", element: <About/>},
-        {id: 101, path:"/contact", element: <ContactUs/>},
-        {id: 101, path:"/login", element: <Login/>},
-        {id: 101, path:"/product", element: <ProductDetail/>}
+        {id: 102, path:"/about", element: <About/>},
+        {id: 103, path:"/contact", element: <ContactUs/>},
+        {id: 104, path:"/login", element: <Login/>},
+        {id: 105, path:"/productdetail", element: <ProductDetail/>},
+        {id: 106, path:"/products", element: <Products/>}
     ]
 
   return (
