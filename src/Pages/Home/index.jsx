@@ -1,42 +1,47 @@
-import axios from 'axios'
-import React, { useEffect, useState } from 'react'
-import { products } from '../../Components/DataJson/data';
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 import { Link } from 'react-router';
 
 const Home = () => {
-    const url = "http://localhost:3000/products"
-    const [myProducts, setMyProducts] = useState([])
+  const [images, setImages] = useState([]);
+  const [currentIndex, setCurrentIndex] = useState(0);
 
+ 
+  useEffect(() => {
+    const fetchImages = async () => {
+      try {
+        const response = await axios.get('http://localhost:3000/products');
+        setImages(response.data.map(product => product.images));
+      } catch (error) {
+        console.error("Resimler alınırken hata oluştu:", error);
+      }
+    };
 
-    useEffect(() => {
-        axios.get(url).then(({data}) => {
-            setMyProducts(data);
-        })
-    }, [])
+    fetchImages();
+  }, []);
 
-    
+ 
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
+    }, 2000);
+
+    return () => clearInterval(interval);
+  }, [images]);
+
+  if (images.length === 0) {
+    return <div>Loading...</div>;
+  }
+
   return (
-    <div className='container px-5 mt-5 mx-auto'>
-        <div className='relative xl:w-[90%] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 bg[var(--back)]'>
+    <div className='grid justify-center items-center w-full h-[calc(100vh-70px)] px-5 bg-[var(--background)]'>
         {
-            myProducts.map(({id, images, title, price, category, description, slug}) => {
-                return <div key={id} className='relative flex flex-col items-center border border-[var(--mainColor)] rounded-[7px]'>
-                    <div className='object-cover w-full mb-2.5 '>
-                        <img src={images[0]} alt={title} className='w-full rounded-tl-[6px] rounded-tr-[6px]'/>
-                    </div>
-                    <div className='p-2.5'>
-                        <h2 className='font-bold mb-2.5 text-[var(--productTitle)] line-clamp-1'>{title}</h2>
-                        <h2 className='absolute top-1 right-1 text-[12px] bg-[var(--background)] py-0.5 px-1 text-[var(--mainColor)] rounded'>{category.name}</h2>
-                        <h2 className='line-clamp-3 mb-2.5'>{description}</h2>
-                        <h2 className='text-[var(--productTitle)] font-bold text-2xl'>{price}€</h2>
-                    </div>
-                    <Link to={"/products/" + slug} className='absolute inset-0'></Link>
-                </div>
-            })
+            <Link to="/products" className='w-full h-[calc(100vh-70px)]'>
+                <img src={images[currentIndex]} alt="carousel" className='h-full'/>
+            </Link>
         }
     </div>
-    </div>
-  )
+  );
 };
 
 export default Home;
