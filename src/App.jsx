@@ -6,7 +6,7 @@ function App() {
 
 
   return (
-    <div className='mx-auto'>
+    <div className=' mx-auto'>
       <NavBar/>
       <WebRoutes/>
     </div>
