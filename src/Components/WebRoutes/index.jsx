@@ -6,6 +6,7 @@ import ProductDetail from '../../Pages/ProductDetail';
 import { Route, Routes } from 'react-router';
 import Login from '../../Pages/Login';
 import Products from '../../Pages/Products';
+import NotFound from '../../Pages/NotFound';
 
 
 const WebRoutes = () => {
@@ -27,6 +28,7 @@ const WebRoutes = () => {
                     return <Route path={path} element={element} key={id}></Route>
                 })
             }
+            <Route path="*" element={<NotFound/>}></Route>
         </Routes>
     </div>
   )
