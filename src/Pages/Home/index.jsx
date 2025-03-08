@@ -24,7 +24,7 @@ const Home = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
-    }, 2000);
+    }, 300);
 
     return () => clearInterval(interval);
   }, [images]);
@@ -34,9 +34,9 @@ const Home = () => {
   }
 
   return (
-    <div className='grid justify-center items-center w-full h-[calc(100vh-70px)] px-5 bg-[var(--background)]'>
+    <div className='grid justify-center items-center w-full h-[calc(100vh-80px)] px-5 bg-[var(--background)]'>
         {
-            <Link to="/products" className='w-full h-[calc(100vh-70px)]'>
+            <Link to="/products" className='w-full h-[calc(60vh)] border-15 border-[#86A788]'>
                 <img src={images[currentIndex]} alt="carousel" className='h-full'/>
             </Link>
         }
