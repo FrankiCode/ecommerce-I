@@ -2,6 +2,8 @@ import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router'
 import NotFound from '../../Pages/NotFound'
+import Loading from '../../Components/Loading'
+import { toast } from 'react-hot-toast';
 
 const ProductDetail = () => {
 
@@ -9,15 +11,30 @@ const ProductDetail = () => {
   const url = "http://localhost:3000/products"
   const [products, setProduct] = useState({});
   const [currentImage, setCurrentImage] = useState("");
+  const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
     axios.get(url).then(({data}) => {
       const currentElement = data.find((e) => e.slug === slug);
       setProduct(currentElement);
       setCurrentImage(currentElement.images[0])
+      setIsLoading(false)
       
     })
+    .catch((err) => {
+      setIsLoading(false)
+      if(err.status === 404) {
+          toast.error("This didn't work.")
+      }
+  });
+
+
   }, [])
+  
+
+if (isLoading) {
+  return <Loading/>
+}
 
   if(!products.slug) {
     return <NotFound/>
