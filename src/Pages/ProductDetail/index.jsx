@@ -1,6 +1,7 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router'
+import NotFound from '../../Pages/NotFound'
 
 const ProductDetail = () => {
 
@@ -17,6 +18,10 @@ const ProductDetail = () => {
       
     })
   }, [])
+
+  if(!products.slug) {
+    return <NotFound/>
+  }
 
 
   return (
