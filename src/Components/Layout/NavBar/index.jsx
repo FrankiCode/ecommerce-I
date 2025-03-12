@@ -43,7 +43,7 @@ const NavBar = ({searchText, setSearchText}) => {
         <div className='flex gap-4 items-center duration-500'>
             <CiSearch className='text-xl lg:text-2xl text-[var(--mainColor)] cursor-pointer z-10 duration-500' onClick={showSearchInput}/>
 
-            <Link to="/login"><Button title='Login' className="hidden md:block lg:text-xl border border-[var(--mainColor)] text-[var(--mainColor)] px-[20px] rounded cursor-pointer hover:bg-[var(--background)] duration-600"/></Link>
+            <Link to="/login"><Button title='Sign up' className="hidden md:block lg:text-xl border border-[var(--mainColor)] text-[var(--mainColor)] px-[20px] rounded cursor-pointer hover:bg-[var(--background)] duration-600"/></Link>
 
             <div className='relative'>
                 <p className='absolute text-[var(--alternative)] text-l text-[12px] flex justify-center items-center top-[-15px] left-[-10px] border w-5 h-5 rounded-full '>99</p>
@@ -63,14 +63,14 @@ const NavBar = ({searchText, setSearchText}) => {
 
 
         { showBar && 
-        (<div className="absolute w-[400px] flex flex-col top-[70px] left-0 h-[calc(100vh-70px)] pt-10 tracking-[4px] pl-10 duration-500 all ease-in bg-[var(--background)] z-50">
+        (<div className="absolute w-[400px] flex flex-col top-[80px] left-0 h-[calc(100vh-80px)] pt-10 tracking-[4px] pl-10 duration-500 all ease-in bg-[var(--myYellow)] z-50">
             {
                 NavBar.map(({id, title, href}) => {
                     return <NavLink to={href} key={id} className="text-xl text-[var(--mainColor)] font-thin hover:bg-[var(--background)] pl-2.5 duration-600">{title}</NavLink>
                 })
             }
             <div className='bg-[var(--mainColor)] w-[40%] mt-5 pl-2.5'>
-                <NavLink to="/login" className="relative flex items-center text-xl text-[var(--background)] font-thin">Login <CiLogin className='absolute left-20 bottom-[2px]'/></NavLink>
+                <NavLink to="/login" className="relative flex items-center text-xl text-[var(--background)] font-thin">Sign up<CiLogin className='absolute left-25 bottom-[2px]'/></NavLink>
             </div>
         </div>)}
     </div>
