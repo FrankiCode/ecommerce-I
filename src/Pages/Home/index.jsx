@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router';
+import Loading from '../../Components/Loading';
+import NavBar from '../../Components/Layout/NavBar';
 
-const Home = () => {
+const Home = ({searchText, setSearchText}) => {
   const [images, setImages] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -30,16 +32,21 @@ const Home = () => {
   }, [images]);
 
   if (images.length === 0) {
-    return <div>Loading...</div>;
+    return <div><Loading/></div>;
   }
 
   return (
-    <div className='grid justify-center items-center w-full h-[calc(100vh-80px)] px-5 bg-[var(--background)]'>
+    
+    <div>
+      <NavBar searchText={searchText} setSearchText={setSearchText}/>
+
+      <div className='grid justify-center items-center w-full h-[calc(100vh-80px)] px-5 bg-[var(--background)]'>
         {
             <Link to="/products" className='w-full h-[calc(60vh)] border-15 border-[#86A788]'>
                 <img src={images[currentIndex]} alt="carousel" className='h-full'/>
             </Link>
         }
+    </div>
     </div>
   );
 };
