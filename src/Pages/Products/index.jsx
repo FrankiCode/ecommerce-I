@@ -59,7 +59,7 @@ const Products = () => {
         setActivePage(1)
         setActiveCategory("All")
 
-    },[searchText, myProducts])
+    },[searchText])
 
 
 
