@@ -8,7 +8,7 @@ const Login = () => {
       <div className='bg-[var(--background)] h-[calc(100vh-80px)]'>
         <div className='grid grid-cols-2 justify-center w-[80%] mx-auto pt-10 '>
           <div className='w-[300px]'>
-            <img src="/Tom-Ford-LoginFoto.webp" alt="" className='w-full' />
+            <img src="/fashion-login.avif" alt="" className='w-full' />
           </div>
           <form className='text-[14px] flex flex-col gap-10'>
               <div className='flex flex-col gap-2.5 w-[400px]'>
