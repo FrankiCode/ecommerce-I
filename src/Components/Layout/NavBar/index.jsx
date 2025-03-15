@@ -1,5 +1,4 @@
 import React, { useRef, useState } from 'react'
-import { HiMiniBars3 } from "react-icons/hi2";
 import { CiSearch } from "react-icons/ci";
 import { Link, NavLink } from 'react-router';
 
@@ -7,7 +6,7 @@ import { HiBars3CenterLeft } from "react-icons/hi2";
 import { LiaTimesSolid } from "react-icons/lia";
 import { CiLogin } from "react-icons/ci";
 import Button from '../../Common/Button'
-import ShoppingBag from '../../../Pages/ShoppingBag';
+import ShoppingBagIcon from '../../Common/ShoppingBagIcon';
 
 const NavBar = ({searchText, setSearchText}) => {
 
@@ -46,7 +45,9 @@ const NavBar = ({searchText, setSearchText}) => {
 
             <Link to="/login"><Button title='Sign up' className="hidden md:block lg:text-xl border border-[var(--mainColor)] text-[var(--mainColor)] px-[20px] rounded cursor-pointer hover:bg-[var(--background)] duration-600"/></Link>
 
-            <ShoppingBag/>
+            <Link to="/shoppingbag">
+                <ShoppingBagIcon/>
+            </Link>
 
             {showSearch && <div className='absolute right-[12%] duration-500'>
                 <input type="search" 
