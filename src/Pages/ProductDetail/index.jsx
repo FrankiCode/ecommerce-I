@@ -8,9 +8,6 @@ import NavBar from '../../Components/Layout/NavBar'
 import useAddToCart from '../../Components/GlobalState/shoppingbagCoounter'
 
 
-// import useAddToCart from '../../Components/GlobalState/shoppingbagCoounter'
-// import useAddJustOnce from '../../Components/GlobalState/addJustOnceOnClick'
-
 const ProductDetail = () => {
 
   
