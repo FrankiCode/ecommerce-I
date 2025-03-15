@@ -5,6 +5,7 @@ import NotFound from '../../Pages/NotFound'
 import Loading from '../../Components/Loading'
 import { toast } from 'react-hot-toast';
 import NavBar from '../../Components/Layout/NavBar'
+import Button from '../../Components/Common/Button'
 
 const ProductDetail = () => {
 
@@ -60,6 +61,10 @@ if (isLoading) {
                 <h2 className='text-[14px] mb-2.5'>{products.description}</h2>
                 <h2 className='text-[12px] md:text-[14px] text-[var(--mainColor)]'>{products.category?.name}</h2>
                 <h2 className='text-[var(--productTitle)] font-bold text-2xl'>{products.price}€</h2>
+                <div className='flex gap-5'>
+                  <Button title="Buy It Now" className=' mt-10 border border-[var(--mainColor)] text-white py-1 px-10 rounded cursor-pointer bg-[var(--mainColor)] hover:bg-[var(--buttonColor)] duration-300'/>
+                  <Button title="Add to cart" className=' mt-10 border border-[var(--mainColor)] text-[var(--mainColor)] py-1 px-10 rounded cursor-pointer hover:bg-[var(--background)] duration-300'/>
+                </div>
             </div>
         </div>
       </div>
