@@ -5,9 +5,11 @@ import NotFound from '../../Pages/NotFound'
 import Loading from '../../Components/Loading'
 import { toast } from 'react-hot-toast';
 import NavBar from '../../Components/Layout/NavBar'
-import Button from '../../Components/Common/Button'
-
 import useAddToCart from '../../Components/GlobalState/shoppingbagCoounter'
+
+
+// import useAddToCart from '../../Components/GlobalState/shoppingbagCoounter'
+// import useAddJustOnce from '../../Components/GlobalState/addJustOnceOnClick'
 
 const ProductDetail = () => {
 
@@ -21,17 +23,20 @@ const ProductDetail = () => {
   const url = "http://localhost:3000/products"
   const [products, setProduct] = useState({});
   const [currentImage, setCurrentImage] = useState("");
+  const [isAddedBasket, setIsAddedBasket] = useState(false);
   const [isLoading, setIsLoading] = useState(true)
-  const { add } = useAddToCart();
 
-
-  console.log(add);
+  const { addNewProduct, basket} = useAddToCart();
+  
   
 
   useEffect(() => {
     axios.get(url).then(({data}) => {
       const currentElement = data.find((e) => e.slug === slug);
       setProduct(currentElement);
+      basket.forEach(({id}) => {
+        currentElement.id === id && setIsAddedBasket(true);
+      });
       setCurrentImage(currentElement.images[0])
       setIsLoading(false)
       
@@ -55,6 +60,13 @@ if (isLoading) {
     return <NotFound/>
   }
 
+  const addBasket = () => {
+    const data = { ...products, count: 1};
+    addNewProduct(data);
+    setIsAddedBasket(true);
+  }
+
+
 
   return (
       <div>
@@ -65,7 +77,7 @@ if (isLoading) {
 
               <div className='grid grid-cols-[100px] grid-rows-[100px_100px_100px] object-cover gap-1'>
                 {products.images?.map((image) => {
-                  return <img src={image} alt=""  className='w-full h-full cursor-pointer' onClick={() => {setCurrentImage(image)}}/>
+                  return <img src={image} alt="" key={image} className='w-full h-full cursor-pointer' onClick={() => {setCurrentImage(image)}}/>
 
                 })}</div>
             </div>
@@ -81,17 +93,17 @@ if (isLoading) {
 
                 <div className='flex gap-5'>
 
-                  <button className=' mt-10 border border-[var(--mainColor)] text-white py-1 px-10 rounded cursor-pointer bg-[var(--mainColor)] hover:bg-[var(--buttonColor)] duration-300'>Buy It Now</button>
+                  <button className=' mt-10 border border-[var(--mainColor)] text-white py-1 px-10 rounded cursor-pointer bg-[var(--mainColor)] hover:bg-[var(--buttonColor)] duration-300'>Buy Now</button>
 
                   <button 
-                    className=' mt-10 border border-[var(--mainColor)] text-[var(--mainColor)] py-1 px-10 rounded cursor-pointer hover:bg-[var(--background)] duration-300'
-                    onClick={() => add()}
-                  >Add To Cart</button>
+                    className={`mt-10 text-[var(--mainColor)] py-1 px-10 rounded cursor-pointer hover:bg-[var(--buttonColor)] duration-300 ${isAddedBasket ? "bg-[var(--mainColor)] text-white" : "bg-[var(--alternative)] text-white"}`}
+                    onClick={addBasket}
+                  >{isAddedBasket ? "Added" : "Add"} to Cart</button>
                 </div>
             </div>
         </div>
       </div>
-  )
+  ) 
 }
 
 export default ProductDetail
