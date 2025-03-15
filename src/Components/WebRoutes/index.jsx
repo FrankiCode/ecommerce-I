@@ -7,6 +7,7 @@ import { Route, Routes } from 'react-router';
 import Login from '../../Pages/Login';
 import Products from '../../Pages/Products';
 import NotFound from '../../Pages/NotFound';
+import ShoppingBag from '../../Pages/ShoppingBag';
 
 
 const WebRoutes = () => {
@@ -17,7 +18,8 @@ const WebRoutes = () => {
         {id: 103, path:"/contact", element: <ContactUs/>},
         {id: 104, path:"/login", element: <Login/>},
         {id: 105, path:"/products/:slug", element: <ProductDetail/>},
-        {id: 106, path:"/products", element: <Products/>}
+        {id: 106, path:"/products", element: <Products/>},
+        {id: 107, path:"/shoppingbag", element: <ShoppingBag/>}
     ]
 
   return (
