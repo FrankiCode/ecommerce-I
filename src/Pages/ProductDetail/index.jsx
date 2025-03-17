@@ -61,7 +61,7 @@ if (isLoading) {
     const data = { ...products, count: 1, totalPrice: products.price};
     addNewProduct(data);
     setIsAddedBasket(true);
-    console.log(data);
+
     
   }
 
