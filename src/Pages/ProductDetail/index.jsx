@@ -58,9 +58,11 @@ if (isLoading) {
   }
 
   const addBasket = () => {
-    const data = { ...products, count: 1};
+    const data = { ...products, count: 1, totalPrice: products.price};
     addNewProduct(data);
     setIsAddedBasket(true);
+    console.log(data);
+    
   }
 
 
@@ -94,7 +96,7 @@ if (isLoading) {
 
                   <button 
                     className={`mt-10 text-[var(--mainColor)] py-1 px-10 rounded cursor-pointer hover:bg-[var(--buttonColor)] duration-300 ${isAddedBasket ? "bg-[var(--mainColor)] text-white" : "bg-[var(--alternative)] text-white"}`}
-                    onClick={addBasket}
+                    onClick={isAddedBasket ? "" : addBasket}
                   >{isAddedBasket ? "Added" : "Add"} to Cart</button>
                 </div>
             </div>
