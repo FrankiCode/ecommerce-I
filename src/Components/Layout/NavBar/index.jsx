@@ -15,7 +15,7 @@ const NavBar = ({searchText, setSearchText}) => {
     const textInSearch = useRef();
 
     const NavBar = [
-        {id:1, title: "Home", href: "/"},
+        {id:0, title: "Home", href: "/"},
         {id:1, title: "Products", href: "/products"},
         {id:2, title: "About", href: "/about"},
         {id:3, title: "Contact us", href: "/contact"},
